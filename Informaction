@@ -1,0 +1,21 @@
+How install flask and flask_SQLalchemy?
+
+<pip install flask>
+<pip install flask_SQLalchemy>
+
+To install DBeaver for database
+
+Create the html with login, edit, delete 
+Html look the table of login 
+Login has an email, phone, birth date and gender
+
+Commands SQL: CREATE, READ,UPDATE, DELETE (CRUD)
+
+
+
+sugestão: sistema que gera as páginas html dinamicamente (crud) a partir de tabelas do BD; referência: https://retool.com/use-case/mysql-crud
+
+https://www.devmedia.com.br/como-fazer-um-crud-a-partir-de-templates/33797
+https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=crud-data-table-for-database-with-modal-form
+https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-tables.php
+https://www.tutorialrepublic.com/codelab.php?topic=bootstrap-3&file=crud-data-table-for-database-with-modal-form
