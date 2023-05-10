@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bem Vindo</title>
+        <link rel="stylesheet" href="../static/js/bootstrap">
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+
+    <body>
+        <div class="posicoes">
+            <aside>
+                <div class="formularios container">
+                    <nav>
+                        <ul class="nav flex-column">
+                            <li class="dropdown">
+                                <button>Cadastrar Usuário</button>
+                                <div class="dropdown-content">
+                                    <h5>Insira os dados:</h5>
+                                    <form name="cadastrar" method="post" action="/cadastrar">
+                                        <label for="nome">Nome:</label>
+                                        <input type="text" name="nome" placeholder="Insira o Nome" required>
+                                        <br><br>
+                                        <label for="idade">Idade:</label>
+                                        <input type="text" name="idade" placeholder="Insira a Idade" required>
+                                        <br><br>
+                                        <button type="submit">Cadastrar</button>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+
+            <!--Mostar dados-->
+            <table id="mostrar">
+                <thead >,<!--Define os titulos-->
+                    <tr> <!--Define as linhas-->
+                        <th id="titulos">Nome</th> <!--th representa as céculas-->
+                        <th id="titulos">Idade</th>
+                        <th id="titulos">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody> <!--é usada para definir o corpo principal de uma tabela HTML-->
+                    {% for p in listagem %}
+                    <tr> <!--para representar as linhas e as tags-->
+                        <td>{{p.name}}</td><!--td para representar as células de dados em cada linha.-->
+                        <td>{{p.idade}}</td>
+                        <td>
+                            <button onclick="location.href='/editar/{{p.id}}'">Editar</button>
+                            <button onclick="if(confirm('Deseja realmente excluir?')){location.href='/excluir/{{p.id}}'}">Excluir</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+
+</html>
