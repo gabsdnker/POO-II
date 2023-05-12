@@ -19,3 +19,19 @@ https://www.devmedia.com.br/como-fazer-um-crud-a-partir-de-templates/33797
 https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=crud-data-table-for-database-with-modal-form
 https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-tables.php
 https://www.tutorialrepublic.com/codelab.php?topic=bootstrap-3&file=crud-data-table-for-database-with-modal-form
+
+O sistema que gera páginas HTML dinamicamente a partir de tabelas de banco de dados é conhecido como um sistema CRUD 
+(acrônimo para Create, Read, Update e Delete). Esse tipo de sistema é comumente utilizado em aplicações web para permitir
+a criação, leitura, atualização e exclusão de registros em um banco de dados.
+
+Em geral, um sistema CRUD é composto por uma camada de apresentação, que é responsável por exibir a interface do usuário, 
+uma camada de acesso a dados, que faz a conexão com o banco de dados e executa as operações CRUD, e uma camada de negócios,
+que contém a lógica de negócios da aplicação.
+
+Para gerar as páginas HTML dinamicamente, o sistema CRUD utiliza linguagens de programação para acessar o banco 
+de dados e criar as consultas necessárias para recuperar os dados que serão exibidos na página. Em seguida, ele 
+utiliza técnicas de geração dinâmica de conteúdo para preencher os modelos de página com os dados recuperados.
+
+Existem muitas ferramentas e frameworks disponíveis que podem ajudar a desenvolver sistemas CRUD, como o Laravel, 
+Ruby on Rails, Django, entre outros. Essas ferramentas fornecem muitas funcionalidades úteis, como autenticação, 
+validação de formulários, segurança de dados, entre outras.
