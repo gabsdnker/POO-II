@@ -1,0 +1,54 @@
+Exercício E6:
+a) criar uma classe em Java, com pelo menos um método e dois atributos
+b) fazer a geração do arquivo .jar (implantável); fazer a documentação do conteúdo do arquivo .jar (classe, métodos, atributos)
+c) criar um programa em java que utilize o .jar que outro colega fez
+Os dois programas devem estar disponíveis na sua resposta (o seu programa java e o .jar que você utilizou, referenciado)
+
+RESPOSTA: 
+a) public class MyClass {
+    private int attribute1;
+    private String attribute2;
+
+    public void myMethod() {
+        System.out.println("Hello, world!");
+    }
+}
+
+b) Para gerar o arquivo .jar a partir dessa classe, você pode seguir os seguintes passos:
+
+    Crie um arquivo de manifesto chamado Manifest.txt e adicione a seguinte linha:
+    Main-Class: MyClass
+Certifique-se de substituir MyClass pelo nome real da classe que você criou.
+
+Compile a classe Java para obter o arquivo .class:
+javac MyClass.java
+
+Crie o arquivo .jar usando o comando jar:
+jar cvfm MyJar.jar Manifest.txt MyClass.class
+
+Agora você terá um arquivo chamado MyJar.jar que contém a classe MyClass.
+
+c) Para criar um programa Java que utilize o .jar criado por outro colega, você pode seguir estes passos:
+
+    Crie um novo arquivo chamado MainClass.java e adicione o seguinte código:
+    public class MainClass {
+    public static void main(String[] args) {
+        MyClass myObject = new MyClass();
+        myObject.myMethod();
+    }
+}
+
+Compile o arquivo MainClass.java:
+javac MainClass.java
+
+Execute o programa Java:
+java MainClass
+
+Isso executará o programa MainClass, que criará uma instância da classe MyClass (do arquivo .jar) e chamará o método myMethod().
+
+7) Pergunta: seria possível usar reflexão para "descobrir" (engenharia reversa) quais classes, métodos e atributos 
+existem no arquivo .jar que está disponibilizado?
+
+RESPOSTA: Sim, é possível usar reflexão em Java para "descobrir" as classes, métodos e atributos existentes no arquivo .jar 
+disponibilizado. Através da API de Reflexão em Java, é possível carregar e inspecionar dinamicamente as classes contidas no 
+arquivo .jar, obter informações sobre seus métodos e atributos, e até mesmo invocar esses métodos em tempo de execução.
