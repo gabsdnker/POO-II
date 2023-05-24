@@ -1,0 +1,41 @@
+Exercício E2: criar três classes (1 herança, 1 agregação ou composição e 1 classe simples) com atributos e métodos;
+a) elaborar código que inspeciona as classes o melhor possível: exibir atributos e métodos, executar métodos, etc
+b) ao terminar, compartilhar o link de acesso a seu código (preferência: repositório)
+c) baixar os códigos de outros colegas, tentar usar seu código de inspeção para exibir informações dos códigos dos outros
+
+RESPOSTA: 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class InspecaoClasses {
+    public static void main(String[] args) {
+        // Inspeção da ClasseA
+        inspectClass(ClasseA.class);
+
+        // Inspeção da ClasseB
+        inspectClass(ClasseB.class);
+
+        // Inspeção da ClasseC
+        inspectClass(ClasseC.class);
+    }
+
+    public static void inspectClass(Class<?> clazz) {
+        System.out.println("Classe: " + clazz.getSimpleName());
+
+        // Exibir os atributos da classe
+        System.out.println("Atributos:");
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            System.out.println(field.getName() + " - " + field.getType().getSimpleName());
+        }
+
+        // Exibir os métodos da classe
+        System.out.println("Métodos:");
+        Method[] methods = clazz.getDeclaredMethods();
+        for (Method method : methods) {
+            System.out.println(method.getName() + " - " + method.getReturnType().getSimpleName());
+        }
+
+        System.out.println();
+    }
+}
