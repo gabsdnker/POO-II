@@ -1,65 +1,100 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bem Vindo</title>
-        <link rel="stylesheet" href="../static/js/bootstrap">
-        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../static/bootstrap/js/bootstrap.js">
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="icon" type="image/png" href="janela">
+        <title>Dinamic Window</title>
     </head>
-
     <body>
-        <div class="posicoes">
+        <div class="posicoes">   
             <aside>
-                <div class="formularios container">
-                    <nav>
-                        <ul class="nav flex-column">
-                            <li class="dropdown">
-                                <button>Cadastrar Usuário</button>
-                                <div class="dropdown-content">
-                                    <h5>Insira os dados:</h5>
-                                    <form name="cadastrar" method="post" action="/cadastrar">
-                                        <label for="nome">Nome:</label>
-                                        <input type="text" name="nome" placeholder="Insira o Nome" required>
-                                        <br><br>
-                                        <label for="idade">Idade:</label>
-                                        <input type="text" name="idade" placeholder="Insira a Idade" required>
-                                        <br><br>
-                                        <button type="submit">Cadastrar</button>
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </aside>
+                <h1 id="estilo">Criando tabelas</h1>
 
-            <!--Mostar dados-->
-            <table id="mostrar">
-                <thead >,<!--Define os titulos-->
-                    <tr> <!--Define as linhas-->
-                        <th id="titulos">Nome</th> <!--th representa as céculas-->
-                        <th id="titulos">Idade</th>
-                        <th id="titulos">Ações</th>
+                <h2 onclick="trocarImagem(this)" class="dropdown" id="sub-titulo">Criar tabela<img id="imagem" src="../static/img/seta-direita.png" alt=""></h2>
+                <div class="dropdown-content">
+                    <form action="/cadastrar" method="post">
+                        <label class="campos-aside" for="tabela">Nome da tabela:</label>
+                        <input class="campos-aside" type="text" name="tabela" id="tabela">
+                        <label class="campos-aside" for="campo">Nome do Campo:</label>
+                        <input class="campos-aside" type="text" name="campo" id="campo">
+                        <label class="campos-aside" for="ID">ID:</label>
+                        <input class="campos-aside" type="text" name="ID" id="ID">
+                        <br>
+                        <input class="campos-aside" type="submit" value="Cadastrar">
+                    </form>
+                </div>
+                <h2 onclick="trocarImagem(this)" class="dropdown" id="sub-titulo">Editar dados<img id="imagem" src="../static/img/seta-direita.png" alt=""></h2>
+                <div class="dropdown-content">
+                    <form action="/editar" method="post">
+                        <label class="campos-aside" for="id-registro">ID:</label>
+                        <input class="campos-aside" type="text" name="id-registro" id="id-registro">
+                        <label class="campos-aside" for="nome-campo">Campo:</label>
+                        <input class="campos-aside" type="text" name="nome-campo" id="nome-campo">
+                        <label class="campos-aside" for="tabela-campo">Tabela:</label>
+                        <input class="campos-aside" type="text" name="tabela-campo" id="tabela-campo">
+                        <br>
+                        <input class="campos-aside" type="submit" value="Editar">
+                    </form>
+                </div>
+                <h2 onclick="trocarImagem(this)" class="dropdown" id="sub-titulo">Atualizar dados<img id="imagem" src="../static/img/seta-direita.png" alt=""></h2>
+                <div class="dropdown-content">
+                    <form action="/atualizar" method="post">
+                        <label class="campos-aside" for="tabela-atualizar">Tabela:</label>
+                        <input class="campos-aside" type="text" name="tabela" id="tabela-atualizar">
+                        <label class="campos-aside" for="id-registro">ID:</label>
+                        <input class="campos-aside" type="text" name="id-registro" id="id-registro">
+                        {% for campo in campos %}
+                            <label class="campos-aside" for="nome-campo">Campo:</label>
+                            <input class="campos-aside" type="text" name="nome-campo" id="nome-campo"><br>
+                        {% endfor %}
+                        <br>
+                        <input class="campos-aside" type="submit" value="Atualizar">
+                    </form>
+                </div>      
+            </aside>
+        </div>
+
+       <div class="container">
+            <h1 class="text-center">Registros</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        {% for campo in campos %}
+                        <th>Campo</th>
+                        {% endfor %}
+                        <th>Tabela</th>
+                        
                     </tr>
                 </thead>
-
-                <tbody> <!--é usada para definir o corpo principal de uma tabela HTML-->
-                    {% for p in listagem %}
-                    <tr> <!--para representar as linhas e as tags-->
-                        <td>{{p.name}}</td><!--td para representar as células de dados em cada linha.-->
-                        <td>{{p.idade}}</td>
-                        <td>
-                            <button onclick="location.href='/editar/{{p.id}}'">Editar</button>
-                            <button onclick="if(confirm('Deseja realmente excluir?')){location.href='/excluir/{{p.id}}'}">Excluir</button>
-                        </td>
-                    </tr>
+                <tbody>
+                    {% for registro in listagem %}
+                        <tr>
+                            <td>{{ registro.id }}</td>
+                            {% for campo in campos %}
+                            <td>{{ getattr(registro, campo) }}</td>
+                            {% endfor %}
+                            <td>{{nova_tabela}}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <form action="/excluir/{{ registro.id }}" method="get" id="button">
+                                        <button type="submit" class="btn btn-primary">Atualizar</button>
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
+         
+        <script src="../static/script.js"></script> <!-- Referencia para arquivos js -->
+        <script src="../static/js/jquery-3.6.4.js"></script> <!-- Chamada de jQuery -->    
     </body>
-
 </html>
