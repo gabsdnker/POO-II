@@ -1,0 +1,23 @@
+Exercício E3: em grupo, propor diagrama UML aprimorado (planttext.com, plantuml.com)
+
+@startuml
+
+class ClasseA {
+  + atributoA: tipoA
+  + metodoA(): void
+}
+
+class ClasseB {
+  + atributoB: tipoB
+  + metodoB(): void
+}
+
+class ClasseC {
+  + atributoC: tipoC
+  + metodoC(): void
+}
+
+ClasseA --|> ClasseB
+ClasseA *-- ClasseC
+
+@enduml
