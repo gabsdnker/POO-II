@@ -1,0 +1,26 @@
+Exercício E1: enviar ainda hoje no fórum um código em alguma linguagem que realize reflexão. 
+Postar o código com uma explicação SUA, bem didática e detalhada. Associar à sua explicação algum conceito apresentado nos slides.
+Citar a(s) fonte(s) de pesquisa. Pode ser feito individual ou em dupla.
+
+RESPOSTA: A reflexão pode ser útil em várias situações, como criar instâncias de classes dinamicamente, acessar/modificar campos 
+privados, invocar métodos dinamicamente e muito mais.No entanto, é importante observar que o uso excessivo da reflexão pode tornar
+o código mais complexo e menos eficiente.
+
+import java.lang.reflect.Method;
+
+public class ReflexaoExemplo {
+    public static void main(String[] args) {
+        // Obtendo a classe da String
+        Class<?> classeString = String.class;
+
+        // Obtendo todos os métodos declarados na classe String
+        Method[] metodosString = classeString.getDeclaredMethods();
+
+        // Iterando pelos métodos e imprimindo seus nomes
+        for (Method metodo : metodosString) {
+            System.out.println(metodo.getName());
+        }
+    }
+}
+
+(https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/package-summary.html)
