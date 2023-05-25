@@ -5,66 +5,66 @@ c) buscar no ZODB o registro 10.000; e listar os 5 registros "seguintes"
 d) comparar os tempos de busca de registro no dos bancos de dados; pode usar o comando "time python3 programa.py"
 
 RESPOSTA:
-1-Instalação do ZODB:
-pip install ZODB
-
-2-Importe as bibliotecas necessárias:
-from ZODB import DB
-from ZODB.FileStorage import FileStorage
+a)
+import sqlite3
+import ZODB
+import ZODB.FileStorage
 import transaction
 
-3-Crie uma instância do FileStorage apontando para o arquivo de banco de dados do SQLite:
-storage = FileStorage('sqlite.db')
-
-4-Crie um objeto DB usando o armazenamento:
-db = DB(storage)
-
-5-Abra uma conexão com o banco de dados:
-connection = db.open()
-
-6-Recupere o raiz do banco de dados:
-root = connection.root()
-
-7-Agora você pode acessar e manipular os objetos persistentes do ZODB como desejar. 
-Por exemplo, para inserir todos os registros do banco de dados SQLite em um novo banco de dados orientado a objetos:
-# Supondo que a tabela no banco de dados SQLite seja chamada 'MyTable'
-import sqlite3
-
-# Conecte-se ao banco de dados SQLite existente
-conn_sqlite = sqlite3.connect('sqlite.db')
+# Conectar ao banco de dados SQLite
+conn_sqlite = sqlite3.connect('banco_sqlite.db')
 cursor_sqlite = conn_sqlite.cursor()
 
-# Execute a consulta SQL para obter todos os registros
-cursor_sqlite.execute('SELECT * FROM MyTable')
-records = cursor_sqlite.fetchall()
+# Conectar ao banco de dados ZODB
+storage = ZODB.FileStorage.FileStorage('banco_zodb.fs')
+db = ZODB.DB(storage)
+connection = db.open()
+root = connection.root()
 
-# Insira os registros no ZODB
-root['MyTable'] = records
+# Obter registros do banco de dados SQLite
+cursor_sqlite.execute('SELECT * FROM tabela')
+registros_sqlite = cursor_sqlite.fetchall()
 
-# Faça a transação para persistir as alterações
+# Inserir registros no banco de dados ZODB
+root.registros_zodb = registros_sqlite
 transaction.commit()
 
-8-Para comparar os tamanhos dos dois bancos de dados, você pode usar a biblioteca os para obter o tamanho dos arquivos:
+# Fechar conexões
+cursor_sqlite.close()
+conn_sqlite.close()
+connection.close()
+db.close()
+
+b)
 import os
 
-size_sqlite = os.path.getsize('sqlite.db')
-size_zodb = os.path.getsize('zodb.fs')
+size_sqlite = os.path.getsize('banco_sqlite.db')
+size_zodb = os.path.getsize('banco_zodb.fs')
 
-print('Tamanho do banco de dados SQLite:', size_sqlite, 'bytes')
-print('Tamanho do banco de dados ZODB:', size_zodb, 'bytes')
+print(f'Tamanho do banco de dados SQLite: {size_sqlite} bytes')
+print(f'Tamanho do banco de dados ZODB: {size_zodb} bytes')
 
-9-Para buscar o registro 10.000 e listar os 5 registros seguintes no ZODB:
-my_table = root['MyTable']
+c)
+root = connection.root()
+registros_zodb = root.registros_zodb
 
-record_10000 = my_table[9999]
-print('Registro 10.000:', record_10000)
+registro_10000 = registros_zodb[9999]
+registros_seguintes = registros_zodb[10000:10005]
 
-records_following = my_table[10000:10005]
+print(f'Registro 10.000: {registro_10000}')
 print('Registros seguintes:')
-for record in records_following:
-    print(record)
-    
- 10-Para comparar os tempos de busca de registro nos dois bancos de dados, você pode usar o comando time junto com a execução do
- programa Python:
- time python3 programa.py
+for registro in registros_seguintes:
+    print(registro)
 
+d)
+import sqlite3
+import ZODB
+import ZODB.FileStorage
+import timeit
+
+# Tempo de busca no banco de dados SQLite
+def busca_sqlite():
+    conn_sqlite = sqlite3.connect('banco_sqlite.db')
+    cursor_sqlite = conn_sqlite.cursor()
+
+    cursor_sql
