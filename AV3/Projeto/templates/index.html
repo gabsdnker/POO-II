@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../static/bootstrap/js/bootstrap.js">
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="icon" type="image/png" href="janela">
+        <title>Bem Vindo</title>
+    </head>
+    <body>
+        <aside>
+            <h1 id="estilo">Creating table</h1>
+            <nav id='sub-titulo' class="nav-menu">
+                <ul class="nav flex-column">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#inicio">
+                            <img id="imagem" src="../static/img/seta-direita.png">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#criar">
+                            <img id="imagem" src="../static/img/seta-direita.png">Criar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Editar">
+                            <img id="imagem" src="../static/img/seta-direita.png">Editar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Excluir">
+                            <img id="imagem" src="../static/img/seta-direita.png">Excluir</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Atualizar">
+                            <img id="imagem" src="../static/img/seta-direita.png">Atualizar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#consultar">
+                            <img id="imagem" src="../static/img/seta-direita.png">Consultar</a>
+                    </li>
+
+                </ul>
+            </nav>    
+        </aside>
+
+        <menu id="main">
+
+           
+            <section id="inicio" class="row m-0 p-0">
+                <div class="col-md-8 d-flex justify-content-center align-items-center flex-column">
+                    <p class="text-white">Bem-vindo ao Gerenciador CRUD!</p>
+                    <p class="text-white">Aqui você pode criar, ler, atualizar e excluir registros.</p>         
+                </div>                
+            </section>
+
+            <br>
+            <hr>
+            <br>
+            
+                <!-- section tables -->
+            <section id="criar" class="mt-5">
+                <div class="container pb-5 pt-5" >
+    
+                    <h2 class="pb-4">Criar</h2>
+    
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col">
+                                <div class="card">
+                                        <h5 class="card-title">Nome da tabela</h5>
+                                        <div class="d-flex justify-content-center">
+                                            <form action="/cadastrar" method="post">
+                                                <label class="campos-aside" for="tabela">Tabela:</label>
+                                                <input class="campos-aside" type="text" name="tabela" id="tabela">
+                                                <label class="campos-aside" for="campo">Campo:</label>
+                                                <input class="campos-aside" type="text" name="campo" id="campo">
+                                                <label class="campos-aside" for="valor">Valor:</label>
+                                                <input class="campos-aside" type="text" name="valor" id="valor">
+                                                <button class="campos-aside" type="button" onclick="addCampo()">+</button>
+                                                <input class="campos-aside" type="submit" value="Cadastrar">
+                                            </form>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                        <h5 class="card-title">Aqui ira uma tabela</h5>
+                                        <p class="card-text">Aqui vira infos</p>
+                                        <div class="d-flex justify-content-center">
+                                            
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                        <h5 class="card-title">Aqui ira uma tabela</h5>
+                                        <p class="card-text">Aqui vira infos</p>
+                                        <div class="d-flex justify-content-center">
+                                        
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                          
+
+                       
+        
+                    </div>
+    
+                </div>
+            </section>
+
+        </menu>
+
+        <script src="../static/script.js"></script> <!-- Referencia para arquivos js -->
+        <script src="../static/js/jquery-3.6.4.js"></script> <!-- Chamada de jQuery -->    
+    </body>
+</html>
