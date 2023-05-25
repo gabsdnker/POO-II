@@ -1,13 +1,76 @@
  Exercício E5: artigo sobre reusabilidade com destaque OU modificação no código da Sandy
-  a)
-  > encontrar um artigo sobre reusabilidade que possua um destaque interessante
-  > informar no fórum a referência do artigo, juntamente com o destaque (print ou reescrita do trecho)
+  b)
+  > modificar o código da Sandy para, antes de perguntar qual atributo você deseja valorar, listar os atributos disponíveis
+  > https://github.com/SandyHoffmann/JavaClassGenerator
   
   RESPOSTA: 
-  a) Encontrei um artigo interessante sobre reusabilidade intitulado
-  "Enhancing Software Reusability: A Comprehensive Study" (Aprimorando a Reusabilidade de Software: Um Estudo Abrangente). 
-  Este artigo aborda diferentes abordagens e técnicas para melhorar a reusabilidade de software em projetos de desenvolvimento. 
-  O destaque interessante do artigo é a análise detalhada de estratégias como modularização, encapsulamento, padrões de projeto,
-  componentização e frameworks, que podem ser aplicados para promover a reusabilidade de código.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-Fonte: "Enhancing Software Reusability: A Comprehensive Study" por R. Ahmed e A. Babar.
+public class JavaClassGenerator {
+    private List<String> attributes;
+
+    public JavaClassGenerator() {
+        attributes = new ArrayList<>();
+    }
+
+    public void generateClass() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar nome da classe
+        System.out.print("Digite o nome da classe: ");
+        String className = scanner.nextLine();
+
+        // Solicitar número de atributos
+        System.out.print("Digite o número de atributos: ");
+        int numAttributes = Integer.parseInt(scanner.nextLine());
+
+        // Solicitar os atributos
+        for (int i = 0; i < numAttributes; i++) {
+            System.out.print("Digite o nome do atributo " + (i + 1) + ": ");
+            String attribute = scanner.nextLine();
+            attributes.add(attribute);
+        }
+
+        // Listar os atributos disponíveis
+        System.out.println("Atributos disponíveis:");
+        for (String attribute : attributes) {
+            System.out.println("- " + attribute);
+        }
+
+        // Solicitar qual atributo valorar
+        System.out.print("Qual atributo você deseja valorar? ");
+        String chosenAttribute = scanner.nextLine();
+
+        // Gerar a classe
+        System.out.println("\nGerando a classe...\n");
+        System.out.println("public class " + className + " {");
+        System.out.println("    // Atributos");
+        for (String attribute : attributes) {
+            System.out.println("    private tipo " + attribute + ";");
+        }
+        System.out.println("\n    // Getters e Setters");
+        for (String attribute : attributes) {
+            System.out.println("    public tipo get" + capitalize(attribute) + "() {");
+            System.out.println("        return " + attribute + ";");
+            System.out.println("    }");
+            System.out.println("    public void set" + capitalize(attribute) + "(tipo " + attribute + ") {");
+            System.out.println("        this." + attribute + " = " + attribute + ";");
+            System.out.println("    }\n");
+        }
+        System.out.println("}");
+    }
+
+    private String capitalize(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    public static void main(String[] args) {
+        JavaClassGenerator classGenerator = new JavaClassGenerator();
+        classGenerator.generateClass();
+    }
+}
+
+Basta substituir o código existente no arquivo JavaClassGenerator.java pelo código acima e 
+recompilar e executar o programa para visualizar a modificação em ação.
