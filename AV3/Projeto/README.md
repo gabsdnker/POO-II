@@ -17,7 +17,7 @@
 - ``Talk about Python/Flask``
 - ``Talk about SQLite/Sqlalchemy``
 - ``Talk about Database``
-- ``Talk about HTML/CSS/JavaScript with tables``
+- ``Talk about HTML/CSS/JavaScript with tables in the database``
 - ``Talk about our project how it works``
 
 
