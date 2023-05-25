@@ -3,3 +3,9 @@ a) criar uma classe em Java, com pelo menos um método e dois atributos
 b) fazer a geração do arquivo .jar (implantável); fazer a documentação do conteúdo do arquivo .jar (classe, métodos, atributos)
 c) criar um programa em java que utilize o .jar que outro colega fez
 Os dois programas devem estar disponíveis na sua resposta (o seu programa java e o .jar que você utilizou, referenciado)
+
+7) Pergunta: seria possível usar reflexão para "descobrir" (engenharia reversa) quais classes, métodos e atributos existem no arquivo .jar que está disponibilizado?
+
+RESPOSTA: Sim, é possível usar reflexão em Java para "descobrir" as classes, métodos e atributos existentes no arquivo .jar 
+disponibilizado. Através da API de Reflexão em Java, é possível carregar e inspecionar dinamicamente as classes contidas no 
+arquivo .jar, obter informações sobre seus métodos e atributos, e até mesmo invocar esses métodos em tempo de execução.
