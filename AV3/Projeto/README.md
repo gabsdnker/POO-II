@@ -25,5 +25,4 @@
 ## ✔️ References (links)
 
 - ``https://retool.com/use-case/mysql-crud``
-- ````
-- ````
+
