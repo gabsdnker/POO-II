@@ -1,0 +1,43 @@
+Título: CRUD Dinâmico
+Subtítulo: Janela Genérica com Frontend e Backend
+
+1. CRUD
+CRUD é um acrônimo que representa as quatro operações básicas em bancos de dados e aplicações web: Create, Read, Update e Delete. 
+Essas operações são utilizadas para criar, ler, atualizar e excluir dados em um sistema de gerenciamento de banco de dados ou em uma aplicação.
+
+2. Flask no Python  
+O Flask é um framework web leve e poderoso escrito em Python. Ele facilita o desenvolvimento rápido de aplicativos web, fornecendo recursos essenciais como roteamento de URLs, 
+gerenciamento de sessões, manipulação de solicitações e respostas, templates para renderização de páginas HTML, entre outros. O Flask é conhecido por sua simplicidade, flexibilidade e bom desempenho.
+Aqui está um exemplo:
+
+Nesse exemplo, importamos a classe Flask do módulo flask e criamos uma instância da aplicação. Em seguida, definimos uma rota raiz ("/") utilizando o decorador @app.route é uma função hello_world 
+que retorna a mensagem "Olá, mundo!". Por fim, iniciamos o servidor de desenvolvimento com app.run().
+
+3.O que é o Jinja?
+O Jinja é um mecanismo de template para Python amplamente utilizado em frameworks web, como Flask e Django. Ele permite renderizar templates HTML dinamicamente com base em dados fornecidos pelo aplicativo. 
+O Jinja possui uma sintaxe semelhante à do template do Django e oferece recursos poderosos para manipular e exibir dados nos templates, incluindo instruções de controle de fluxo, filtros, iterações e macros.
+
+3.1.Como pode ser utilizado as tabelas do banco de dados?
+As tabelas do banco de dados são utilizadas de diversas maneiras, como armazenamento de dados estruturados, consultas e recuperação de dados usando a linguagem SQL, estabelecimento de relacionamentos 
+entre tabelas por meio de chaves estrangeiras, atualização e modificação de dados (CRUD) e aplicação de restrições de integridade para garantir a consistência dos dados.
+
+3.2. SQLite
+O SQLite é um sistema de gerenciamento de banco de dados relacional embutido, que implementa um banco de dados SQL completo e independente. Ele é uma biblioteca de software escrita em C, 
+incorporada diretamente em um programa ou aplicativo, o que o torna adequado para uso em aplicações e dispositivos que requerem um banco de dados local simples. O SQLite é autossuficiente, transacional, 
+não requer configuração separada e oferece compatibilidade com SQL. É amplamente utilizado em uma variedade de aplicações devido à sua portabilidade, eficiência e facilidade de uso.
+
+3.3. SQLalchemy
+O SQLAlchemy é uma biblioteca em Python que fornece uma camada de abstração sobre diferentes sistemas de gerenciamento de banco de dados relacionais. Ele oferece recursos avançados,
+como mapeamento objeto-relacional (ORM), consultas complexas, expressões SQL e suporte a transações. O SQLAlchemy simplifica o trabalho com bancos de dados relacionais, permitindo que 
+os desenvolvedores interajam com o banco de dados usando objetos Python.
+
+3.4. Diferença entre SQLite e o SQLalchemy
+O SQLite é um sistema de gerenciamento de banco de dados embutido que lida com a persistência e consulta de dados, enquanto o SQLAlchemy é uma biblioteca ORM que facilita a interação com bancos de dados 
+relacionais, incluindo o SQLite. O SQLite é uma solução leve e eficiente para aplicações com banco de dados local, enquanto o SQLAlchemy fornece uma camada de abstração flexível e avançada para trabalhar 
+com diferentes sistemas de banco de dados relacionais. O SQLAlchemy complementa o SQLite, permitindo que os desenvolvedores escrevam código mais expressivo e independente do sistema de banco de dados 
+subjacente.
+
+4.Objetivo do projeto CRUD dinâmico
+O objetivo de um projeto CRUD dinâmico é criar uma aplicação flexível e personalizável que permita realizar operações básicas de criação, leitura, atualização e exclusão de dados em um banco de dados. 
+Isso é alcançado por meio da adaptação fácil a diferentes entidades ou tabelas, reutilização de código, interface amigável e implementação de medidas de segurança. O objetivo final é fornecer uma solução 
+eficiente para manipulação de dados, facilitando o desenvolvimento e tornando a aplicação adaptável às mudanças nos requisitos.
