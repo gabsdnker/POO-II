@@ -4,7 +4,7 @@
 
 - ``CRUD (create, read, update, delete)``
 - ``Python/Flask``
-- ``Tables``
+- ``Tables in the database``
 - ``SQLite``
 - ``Sqlalchemy``
 - ``Database``
@@ -23,6 +23,6 @@
 
 ## ✔️ References (links)
 
-- ````
+- ``https://retool.com/use-case/mysql-crud``
 - ````
 - ````
