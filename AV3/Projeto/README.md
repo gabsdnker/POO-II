@@ -9,6 +9,7 @@
 - ``Sqlalchemy``
 - ``Database``
 - ``HTML/CSS/JavaScript``
+- ``Jinja2`
 
 ## ✔️ Article
 
