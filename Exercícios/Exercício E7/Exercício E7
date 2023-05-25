@@ -1,0 +1,61 @@
+Exercício E7: criar uma classe persistente no java usando jdbc ou hibernate (sugestão do momento: usar mv7hib)
+
+RESPOSTA: 
+#Criando a classe percistente
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "price")
+    private double price;
+
+    // Construtores, getters e setters
+}
+
+#Criando uma classe de utilitário para a persistência
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateUtil {
+    private static final SessionFactory sessionFactory;
+
+    static {
+        try {
+            Configuration configuration = new Configuration().configure();
+            sessionFactory = configuration.buildSessionFactory();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to initialize Hibernate Util", e);
+        }
+    }
+
+    public static void saveOrUpdate(Object entity) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(entity);
+        transaction.commit();
+        session.close();
+    }
+
+    // Outros métodos para carregar, atualizar e excluir entidades
+}
+
+#Funç
+public class Main {
+    public static void main(String[] args) {
+        Product product = new Product();
+        product.setName("Product A");
+        product.setPrice(10.99);
+
+        HibernateUtil.saveOrUpdate(product);
+    }
+}

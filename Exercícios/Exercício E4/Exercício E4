@@ -1,0 +1,128 @@
+Exercícios sobre reusabilidade
+
+1) Considere as afirmações a seguir:
+
+I) É sempre mais vantajoso desenvolver software utilizando o paradigma de orientação a objetos.
+II) Herança é um recurso que torna o software mais reusável.
+III) Orientação a objetos promove o reuso de software.
+
+As afirmações corretas são:
+
+a) I e II
+b) I e III
+c) II e III 
+d) I, II e III
+e) Somente a II
+
+RESPOSTA: c) II e III.
+
+2) Considere a seguinte definição: "um conjunto de classes que incorpora um projeto abstrato para soluções de uma família de
+problemas relacionados". No contexto de programação orientada a objetos, esse conceito designa o seguinte termo:
+
+a) Framework  
+b) Biblioteca
+c) Pacote
+d) Toolkit
+e) Reusabilidade
+
+RESPOSTA: a) Framework.
+
+3) A reusabilidade de software não ocorre por acaso. No contexto de programação orientada a objetos, 
+qual das características abaixo NÃO é impactante no projeto de classes reusáveis?
+
+a) Julgamento
+b) Experiência
+c) Experimentação
+d) Linguagem de programação 
+e) Isolamento de características fundamentais de cada classe
+
+RESPOSTA: d) Linguagem de programação
+
+4) Há um recurso de programação orientada a objetos que aumenta a capacidade de reuso de software,
+com base na redução do número de termos (vocabulário) necessários ao programador, 
+visto que ações de natureza similar serão nomeadas da mesma forma, em uma mesma classe ou em classes diferentes.
+Esse recurso permite também que elementos diferentes possam coexistir em estruturas de dados, 
+sendo tratados da mesma forma por um manipulador da estrutura devido ao nome comum que a ação de manipulação possui. 
+Esse recurso é chamado:
+
+a) Herança
+b) Encapsulamento
+c) Polimorfismo 
+d) Herança múltipla
+e) Abstração de dados
+
+RESPOSTA: c) Polimorfismo
+
+5) A herança facilita o reuso de software desenvolvido com orientação a objetos. 
+Nesse contexto,qual das características abaixo é FALSA?
+
+a) Subclasses podem adicionar operações herdadas
+b) Subclasses podem redefinir operações herdadas
+c) Subclasses podem cancelar operações herdadas 
+d) Superclasses podem ser abstratas
+e) Superclasses podem ser concretas
+
+RESPOSTA: e) Superclasses podem ser concretas.
+
+6) Considere uma classe chamada Motorista, com os atributos Nome, número de telefone e número da CNH. 
+Há também outra classe chamada Vendedor, que contém os atributos Nome, CPF, número de telefone e percentual de comissão que o vendedor recebe em suas vendas.
+Forneça uma solução para melhorar a reusabilidade dessas classes.
+
+RESPOSTA: Uma solução para melhorar a reusabilidade das classes Motorista e Vendedor seria utilizar a herança para criar
+uma classe base chamada Pessoa, que conteria os atributos comuns a ambas as classes, como Nome e número de telefone.
+Dessa forma, evitamos a repetição desses atributos em cada classe individualmente. Exemplo na pasta Questão06-E4.
+
+7) O mecanismo de polimorfismo pode ser implementado com o reuso do mesmo nome de método diversas vezes na mesma classe, 
+parametrizado de maneiras diferentes, bem como por meio do reuso do nome de método e de sua implementação por meio da herança. Nesse sentido, pode-se dizer que tais mecanismos favorecem a criação de um protocolo padronizado de comunicação entre os objetos. Em termos práticos, isso significa que:
+
+a) As classes possuem atributos similares
+b) Um objeto pode acionar um método de mesmo nome em objetos de classes diferentes
+c) Um objeto pode invocar o método de outro objeto
+d) Duas classes não relacionadas podem conter o mesmo nome de método
+e) Uma superclasse pode conter os mesmos métodos que uma subclasse contém
+
+RESPOSTA: b) Um objeto pode acionar um método de mesmo nome em objetos de classes diferentes
+
+8) Todas as afirmações a seguir são características de classes abstratas, EXCETO:
+
+a) Não possui instâncias
+b) Geralmente ocupam o topo de hierarquia de classes
+c) Geralmente não contém variáveis de instância (atributos)
+d) Define métodos a serem implementados por subclasses
+e) Contém implementações de construtores polimórficos 
+
+RESPOSTA: e) Contém implementações de construtores polimórficos
+
+9) Herança e composição são duas possíveis estratégias de organizar classes de forma a favorecer o reuso de software. 
+Considere as classes Cliente e Pedido, elaboradas para que possam ser capturadas informações dos pedidos feitos por um cliente. 
+Qual as opções retrata a melhor opção para modelar a relação entre essas duas classes?
+
+a) Pedido como superclasse de Cliente, para que os dados do pedido estejam disponíveis na classe Cliente.
+b) Cliente como superclasse de Pedido, para que os dados do cliente estejam disponíveis na classe Pedido.
+c) Pedido como variável de instância (atributo) de Cliente, para que as informações do pedido estejam disponíveis ao cliente.
+d) Cliente como variável de instância (atributo) de Pedido, para que as informações do cliente estejam disponíveis no pedido. 
+e) Nenhuma as opções anteriores é capaz de relacionar as classes Pedido e Cliente de forma a armazenar as informações necessárias.
+
+RESPOSTA: c) Pedido como variável de instância (atributo) de Cliente, para que as informações do pedido estejam disponíveis ao cliente.
+
+10) Assinale a alternativa FALSA sobre aspectos gerais do reuso de software no contexto de programação orientada a objetos:
+
+a) Manutenção de um sistema é uma forma de reuso de software
+b) Polimorfismo ajuda na manutenção de software pois reduz a quantidade de software a ser compreendido por novos programadores
+c) O reuso de software em um projeto de sistema ocorre naturalmente quando se utiliza orientação a objetos 
+d) A reescrita de classes antigas visando torná-las mais reusáveis é importante
+e) Abstrações úteis são construídas a partir de problemas específicos que podem ser aplicados em cenários mais amplos
+
+RESPOSTA: b) Polimorfismo ajuda na manutenção de software pois reduz a quantidade de software a ser compreendido por novos programadores
+
+11) Faça um programa que "some" diferentes elementos. Exemplo: casa + banana + algoritmo quicksort.
+
+RESPOSTA:
+elementos = ["casa", "banana", "algoritmo quicksort"]
+resultado = ""
+
+for elemento in elementos:
+    resultado += elemento
+
+print(resultado)
+
