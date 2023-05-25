@@ -1,7 +1,0 @@
-python3 install pip
-
-    pip install-->
-
-        flask
-        flask_sqlalchemy
-
