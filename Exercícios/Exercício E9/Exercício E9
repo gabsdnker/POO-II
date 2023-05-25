@@ -1,0 +1,67 @@
+Exercício E9:
+RESPOSTA: 
+
+a) Elaborar um programa que insira todos os registros do banco de dados do passo 2 em um novo banco de dados orientado a objetos:
+import sqlite3
+import ZODB
+import ZODB.FileStorage
+import transaction
+
+# Conectar ao banco de dados SQLite
+conn_sqlite = sqlite3.connect('banco_sqlite.db')
+cursor_sqlite = conn_sqlite.cursor()
+
+# Conectar ao banco de dados ZODB
+storage = ZODB.FileStorage.FileStorage('banco_zodb.fs')
+db = ZODB.DB(storage)
+connection = db.open()
+root = connection.root()
+
+# Obter registros do banco de dados SQLite
+cursor_sqlite.execute('SELECT * FROM tabela')
+registros_sqlite = cursor_sqlite.fetchall()
+
+# Inserir registros no banco de dados ZODB
+root.registros_zodb = registros_sqlite
+transaction.commit()
+
+# Fechar conexões
+cursor_sqlite.close()
+conn_sqlite.close()
+connection.close()
+db.close()
+
+b) Comparar os tamanhos dos dois bancos de dados (SQLite e ZODB):
+import os
+
+size_sqlite = os.path.getsize('banco_sqlite.db')
+size_zodb = os.path.getsize('banco_zodb.fs')
+
+print(f'Tamanho do banco de dados SQLite: {size_sqlite} bytes')
+print(f'Tamanho do banco de dados ZODB: {size_zodb} bytes')
+
+c) Buscar no ZODB o registro 10.000 e listar os 5 registros seguintes:
+root = connection.root()
+registros_zodb = root.registros_zodb
+
+registro_10000 = registros_zodb[9999]
+registros_seguintes = registros_zodb[10000:10005]
+
+print(f'Registro 10.000: {registro_10000}')
+print('Registros seguintes:')
+for registro in registros_seguintes:
+    print(registro)
+
+d) Comparar os tempos de busca de registro nos dois bancos de dados:
+import sqlite3
+import ZODB
+import ZODB.FileStorage
+import timeit
+
+# Tempo de busca no banco de dados SQLite
+def busca_sqlite():
+    conn_sqlite = sqlite3.connect('banco_sqlite.db')
+    cursor_sqlite = conn_sqlite.cursor()
+
+    cursor_sql
+
