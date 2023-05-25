@@ -70,7 +70,7 @@ Forneça uma solução para melhorar a reusabilidade dessas classes.
 
 RESPOSTA: Uma solução para melhorar a reusabilidade das classes Motorista e Vendedor seria utilizar a herança para criar
 uma classe base chamada Pessoa, que conteria os atributos comuns a ambas as classes, como Nome e número de telefone.
-Dessa forma, evitamos a repetição desses atributos em cada classe individualmente. Exemplo na pasta Questão06-E3.
+Dessa forma, evitamos a repetição desses atributos em cada classe individualmente. Exemplo na pasta Questão06-E4.
 
 7) O mecanismo de polimorfismo pode ser implementado com o reuso do mesmo nome de método diversas vezes na mesma classe, 
 parametrizado de maneiras diferentes, bem como por meio do reuso do nome de método e de sua implementação por meio da herança. Nesse sentido, pode-se dizer que tais mecanismos favorecem a criação de um protocolo padronizado de comunicação entre os objetos. Em termos práticos, isso significa que:
