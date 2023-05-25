@@ -1,6 +1,6 @@
 # Project AV3
 
-## ✔️ Dynamic Window
+## ✔️ Dynamic CRUD
 
 - ``CRUD (create, read, update, delete)``
 - ``Python/Flask``
