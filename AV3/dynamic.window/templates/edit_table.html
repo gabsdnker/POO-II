@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/edit_table.css">
+        <title>Edit table</title>
+    </head>
+    
+    <body>
+
+        <h1 style="text-align: center;">Edit the table: {{ table.name }}</h1>
+        <hr><br>
+
+        <div class="carousell" style="margin: 0 auto;">
+            <!-- div que permite alterar o nome da tabela -->
+            <div class="cards">
+                <h2>Change table name</h2>
+                <form action="{{ url_for('edit_table', table_id=table.id) }}" method="POST">
+                    <input type="text" name="name" value="{{ table.name }}" required>
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+            
+            <!-- div que faz adição de colunas -->
+            <div class="cards">
+                <h2>Add columns</h2>
+                <form action="{{ url_for('add_column', table_id=table.id) }}" method="POST">
+                    <input type="text" name="name" placeholder="Column name" required>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+            
+            <!-- div que faz adição de linhas -->
+            <div class="cards">
+                <h2>Add row</h2>
+                <form action="{{ url_for('add_row', table_id=table.id) }}" method="POST">
+                    <button type="submit">Add</button>
+                </form>           
+            </div>
+            
+            <div class="cards">                                                      
+                <div class="d-flex justify-content-center">
+                    <a href="{{ url_for('show_tables') }}" style="font-family: Arial, sans-serif;" class="btn">View Tables</a>
+                </div>                               
+            </div>   
+            
+        </div>
+        
+        <br><br><hr>
+
+        <!-- section de exibição das tabelas -->
+        <section>
+            <h2 style="text-align: center;">{{ table.name }}</h2>
+            <table class="edit-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        {% for column in table.columns %}
+                            <th id="column-{{ loop.index }}">
+                                <div style="display: inline-block;">
+                                    {{ column.name }}
+                                    <form action="{{ url_for('delete_column', column_id=column.id) }}" method="POST" style="display: inline-block;">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for row in table.rows %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        {% set found_cell = False %}
+                        {% for column in table.columns %}
+                            {% set cell = None %}
+                            {% for c in row.cells %}
+                                {% if c.column_id == column.id %}
+                                    {% set cell = c %}
+                                    {% set found_cell = True %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if found_cell %}
+                                <td>
+                                    <form action="{{ url_for('add_cell', table_id=table.id, row_id=row.id) }}" method="POST">
+                                        <input type="text" name="value" value="{{ cell.value if cell else '' }}" required>
+                                    </form>
+                                </td>
+                                {% set found_cell = False %}
+                            {% else %}
+                            <td>
+                                <form class="cell" action="{{ url_for('add_cell', table_id=table.id, column_id=column.id, row_id=row.id) }}" method="POST">
+                                    <input type="text" name="value" placeholder="New element" required>
+                                    <button class="add-button" onclick="updateCell(event)">Add </button>
+                                </form>
+                                <form class="cell" action="{{ url_for('delete_cell', table_id=table.id, column_id=column.id, row_id=row.id) }}" method="POST">
+                                    <button class="delete-button" type="submit" style="display: none;">Delete</button>
+                                     
+                                </form>
+                            </td>
+                            
+                            {% endif %}
+                        {% endfor %}
+                       <td>
+                            <form action="{{ url_for('delete_row', table_id=table.id, row_id=row.id) }}" method="POST">
+                                <button type="submit">Delete line</button>
+                            </form>
+                        
+                       </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>                            
+            </table>
+          
+        </section>
+
+        <script src="../static/edit_table.js"></script> <!-- Referencia para arquivos js -->
+        <script src="../static/js/jquery-3.6.4.js"></script> <!-- Chamada de jQuery -->        
+    </body>
+</html>

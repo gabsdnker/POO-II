@@ -1,0 +1,58 @@
+.edit-table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.carousell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.cards {
+    width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    background-color: #b1e5ee;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /*define a direção da coluna */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cards form {
+    margin-top: 10px; /*margem superior para separar o formulário do texto */
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+  }
+
+  .cell span {
+    margin-right: 10px;
+  }
+
+  .cell button {
+    margin-left: 10px;
+  }
+
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4da2fe;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/show_tables.css">
+        <title>Show created tables</title>
+    </head>
+    <body>
+
+        <!-- Seção de carrossel para listar as tabelas existentes -->
+        <section>
+            <h1>Show tables</h1>
+            <div class="carousel">
+                {% for table in tables %}
+                    <a href="#" class="table-card" data-table-id="{{ table.id }}" style="text-decoration: none; color: black; font-family: 'Times New Roman', Times, serif;">
+                        {{ table.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Seção de exibição para expandir as tabelas clicadas -->
+        <section>
+            <h2>Selected table:</h2>
+            <div class="selected-table">
+                <div class="table-card2">
+                    <h3 id="table-name"></h3>
+                    <table id="table-data">
+                        <thead>
+                            <tr>
+                                {% for column in columns %}
+                                    <th class="estilo">{{ column }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in table_data %}
+                                <tr>
+                                    {% for column in columns %}
+                                        <td class="estilo">{{ row[column] }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".table-card").click(function() {
+                    var tableId = $(this).data("table-id");
+                    loadTableData(tableId);
+                });
+
+                function loadTableData(tableId) {
+                    // Fazer uma requisição AJAX para obter os dados da tabela pelo ID e preencher a div "selected-table"
+                    $.ajax({
+                        url: "/get_table_data/" + tableId,
+                        type: "GET",
+                        success: function(data) {
+                            $("#table-name").text(data.table_name); // Definir o nome da tabela
+                            var tableData = data.columns.map(function(column) {
+                                return "<td>" + column + "</td>"; // Criar uma célula de coluna para cada coluna na tabela
+                            });
+                            $("#table-data tbody").html("<tr>" + tableData.join("") + "</tr>"); // Adicionar os dados da tabela ao corpo da tabela HTML
+                        },
+                        error: function() {
+                            $(".selected-table").html("<p>Erro ao carregar os dados da tabela.</p>");
+                        }
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>

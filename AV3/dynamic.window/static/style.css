@@ -1,0 +1,130 @@
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    margin-right: 0%;
+    background: #b1e5ee;
+    overflow-y: auto;
+    z-index: 9999;
+    transition: all ease 0.5s;
+    
+   
+}
+
+#estilo{
+    position: relative;
+    text-align: center;
+    font-size: 25px;  
+    margin-bottom: 15%;
+    background-color: #98deeb;
+   
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+#sub-titulo{
+    font-size: 20px;
+    margin-left: 5%;
+    margin-right: 7%;
+}
+
+aside .campos-aside{
+    margin-left: 15%;
+    display: block;
+}
+
+.nav-link{
+    color: rgb(0, 0, 0);
+}
+
+
+.nav-link:hover{
+    background-color: #a6ecf8;
+    cursor: pointer;
+}
+
+
+
+#imagem{
+    width: 7%;
+    float: right;
+    margin-top: 2%;
+}
+  
+#main {
+    margin-left: 300px;
+    padding-left: 0%;
+    margin-top: 0%;
+}
+
+section#inicio {
+    background-image: url("./img/capa.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: relative;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    }
+    section#inicio p {
+    font-size: 3rem;
+    padding-right: 0%;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+  
+ 
+#Editar{
+    background-color: #feffff;
+    height: 100vh;
+}
+.table-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.color1 {
+    background-color: #feffff;
+}
+
+.color2 {
+    
+    background-color: #c9e2e6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+#criar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #feffff;
+
+}
+.table-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-item-content {
+    text-align: left;
+}
