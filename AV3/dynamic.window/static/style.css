@@ -1,3 +1,7 @@
+body{
+    background-color: #F6F1F1;
+    font-family:Georgia, serif;
+}
 aside {
     position: fixed;
     top: 0;
@@ -5,7 +9,7 @@ aside {
     bottom: 0;
     width: 300px;
     margin-right: 0%;
-    background: #b1e5ee;
+    background: #AFD3E2;
     overflow-y: auto;
     z-index: 9999;
     transition: all ease 0.5s;
@@ -18,7 +22,7 @@ aside {
     text-align: center;
     font-size: 25px;  
     margin-bottom: 15%;
-    background-color: #98deeb;
+    background-color: #19A7CE;
    
     padding-top: 8%;
     padding-bottom: 8%;
@@ -40,12 +44,9 @@ aside .campos-aside{
 
 
 .nav-link:hover{
-    background-color: #a6ecf8;
+    background-color: #AFD3E2;
     cursor: pointer;
 }
-
-
-
 #imagem{
     width: 7%;
     float: right;
@@ -78,36 +79,37 @@ section#inicio {
   
  
 #Editar{
-    background-color: #feffff;
+    background-color: #F6F1F1;
     height: 100vh;
+    width: 100%;
 }
 .table-item {
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid lightgray;
     border-radius: 5px;
 }
 
 .color1 {
-    background-color: #feffff;
+    background-color: #F6F1F1;
 }
 
 .color2 {
     
-    background-color: #c9e2e6;
+    background-color: #AFD3E2;
 }
 
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #19A7CE;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #146C94;
 }
 
 #criar{
@@ -116,7 +118,7 @@ section#inicio {
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-color: #feffff;
+    background-color: #F6F1F1;
 
 }
 .table-item {

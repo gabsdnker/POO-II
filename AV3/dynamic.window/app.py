@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from flask_sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.db'
@@ -21,20 +22,21 @@ class Column(db.Model):
 
     def __repr__(self):
         return f"<Column {self.name}>"
+
 class Row(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     table_id = db.Column(db.Integer, db.ForeignKey('table.id'))
-    cells = db.relationship('Cell', cascade='all, delete-orphan')
+    cells = db.relationship('Cell', backref='row', cascade='all, delete-orphan')
 
     def __repr__(self):
         return f"<Row {self.id}>"
+
 class Cell(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     row_id = db.Column(db.Integer, db.ForeignKey('row.id'))
     column_id = db.Column(db.Integer, db.ForeignKey('column.id'))
     value = db.Column(db.String(255))
 
-    row = db.relationship('Row', backref='cell')
     column = db.relationship('Column', backref='cells')
 
     def __repr__(self):
@@ -118,8 +120,14 @@ def delete_row(row_id):
 def add_cell(table_id, column_id, row_id):   
     row = Row.query.get_or_404(row_id)
     value = request.form['value']
-    cell = Cell(row=row, value=value)
-    db.session.add(cell)
+    cell = Cell.query.filter_by(row=row, column_id=column_id).first()
+    
+    if cell:
+        cell.value = value
+    else:
+        cell = Cell(row=row, column_id=column_id, value=value)
+        db.session.add(cell)
+    
     db.session.commit()
     return redirect(url_for('edit_table', table_id=table_id))
 
@@ -127,14 +135,15 @@ def add_cell(table_id, column_id, row_id):
 def delete_cell(table_id, column_id, row_id):
     row = Row.query.get_or_404(row_id)
     column = Column.query.get_or_404(column_id)
-    cell = Cell.query.filter_by(row=row, column=column).first()     
+    cell = Cell.query.filter_by(row=row, column=column).first()
+    
     if cell:
         db.session.delete(cell)
         db.session.commit()
         flash('Célula excluída com sucesso.', 'success')
-        
-    if not cell:
-        flash('Célula não encontrada.', 'error')       
+    else:
+        flash('Célula não encontrada.', 'error')
+    
     return redirect(url_for('edit_table', table_id=table_id))
 
 @app.route('/show_cell/<int:table_id>/<int:column_id>/<int:row_id>')
@@ -157,12 +166,24 @@ def show_tables():
 def get_table_data(table_id):
     table = Table.query.get_or_404(table_id)
     columns = table.columns
+    table_data = []
+
+    for row in table.rows:
+        cell_data = {}
+        for column in columns:
+            cell = Cell.query.filter_by(row=row, column=column).first()
+            if cell:
+                cell_data[column.name] = cell.value
+            else:
+                cell_data[column.name] = ""
+        table_data.append(cell_data)
+
     data = {
         'table_name': table.name,
-        'columns': [column.name for column in columns]
+        'columns': [column.name for column in columns],
+        'table_data': table_data
     }
     return jsonify(data)
-
 
 with app.app_context():
     db.create_all()
